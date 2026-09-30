@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Modadrop — onlarca marka, tek yerde</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Manrope:wght@600;700;800&display=block" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      /* Ad typography: heavy uppercase Manrope for headlines and prices (brand sans), Bodoni only in
+         the Modadrop wordmark. Porcelain + ink; oxblood only on money saved (BRAND.md). */
+      :root { --bg: #fbfaf7; --card: #ffffff; --ink: #17141a; --muted: #6f6a75; --line: #e9e5e0; --ox: #8c1d2f; --warm: #f3ece4; --photo: #f3f0eb; }
+      body { margin: 0; background: #000; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); font-family: "Manrope"; color: var(--ink); }
+      .scene { position: absolute; inset: 0; overflow: hidden;
+        background: radial-gradient(120% 55% at 50% -8%, var(--warm) 0%, rgba(243,236,228,0) 62%), var(--bg); }
+      video.seg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+      #s2 { object-position: 50% 100%; }
+
+      .h { position: absolute; left: 0; right: 0; text-align: center; font-weight: 800; text-transform: uppercase;
+        letter-spacing: -0.02em; line-height: .92; }
+      .h .ox { color: var(--ox); }
+      .eyebrow { font-weight: 700; font-size: 26px; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); }
+      .photo { position: absolute; background: var(--photo); border-radius: 28px; overflow: hidden;
+        box-shadow: 0 30px 70px rgba(60, 45, 30, .14), 0 0 0 1px rgba(23, 20, 26, .04); }
+      .photo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+      #s-problem .photo, #s-drops .photo { background: #fff; }
+      .chip { display: inline-block; padding: 5px 14px 6px; border-radius: 10px; background: var(--ox); color: #fff; font-weight: 800; }
+
+      /* 0–4.9 hook: the brands */
+      #s-brands .h { top: 130px; font-size: 118px; }
+      #s-brands .h small { display: block; font-size: 118px; margin-top: 2px; color: var(--ink); }
+      #grid { position: absolute; left: 60px; top: 470px; width: 960px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 24px; }
+      .cell { background: var(--card); border-radius: 24px; overflow: hidden; box-shadow: 0 18px 40px rgba(60, 45, 30, .10), 0 0 0 1px rgba(23, 20, 26, .04); }
+      .cell .im { height: 420px; background: var(--photo); }
+      .cell .im img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; display: block; }
+      .cell .ft { padding: 18px 18px 20px; }
+      .cell .bn { font-weight: 800; font-size: 24px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+      .cell .pr { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; font-variant-numeric: tabular-nums; }
+      .cell .pr strong { font-weight: 800; font-size: 44px; letter-spacing: -0.02em; }
+      .cell .chip { font-size: 22px; }
+
+      /* 4.9–8.7 the problem */
+      #s-problem .h { top: 200px; font-size: 150px; }
+      #s-problem .sub { position: absolute; top: 360px; left: 0; right: 0; text-align: center; font-weight: 700; font-size: 36px; color: var(--muted); }
+      #s-problem .photo { left: 90px; top: 480px; width: 580px; height: 761px; }
+      #refresh { position: absolute; left: 830px; top: 500px; width: 130px; height: 130px; border-radius: 50%; background: var(--card);
+        box-shadow: 0 14px 30px rgba(60, 45, 30, .14); display: flex; align-items: center; justify-content: center; }
+      #refresh svg { width: 66px; height: 66px; fill: none; stroke: var(--ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+      .tag { position: absolute; background: var(--card); border-radius: 24px; padding: 30px 34px 32px;
+        box-shadow: 0 24px 50px rgba(60, 45, 30, .16), 0 0 0 1px rgba(23, 20, 26, .05); }
+      .tag .bn { font-weight: 800; font-size: 24px; letter-spacing: .16em; text-transform: uppercase; }
+      .tag .nm { font-weight: 600; font-size: 28px; color: var(--muted); margin-top: 6px; }
+      .tag .olds { display: flex; gap: 18px; min-height: 44px; margin-top: 18px; }
+      .tag .old { position: relative; font-weight: 700; font-size: 34px; color: var(--muted); font-variant-numeric: tabular-nums; }
+      .tag .old i { position: absolute; left: -4px; right: -4px; top: 54%; height: 3px; background: var(--muted); transform-origin: 0 50%; }
+      .tag .curs { position: relative; height: 96px; }
+      .tag .cur { position: absolute; left: 0; top: 0; font-weight: 800; font-size: 92px; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+      .tag .chip { font-size: 30px; margin-top: 14px; }
+      #s-problem .tag { left: 570px; top: 820px; width: 410px; }
+
+      /* 12.0–16.2 drops */
+      #s-drops .photo { left: 80px; top: 580px; width: 560px; height: 735px; }
+      #s-drops .tag { left: 540px; top: 820px; width: 450px; }
+      .push { position: absolute; left: 40px; right: 40px; top: 150px; }
+      .push .b { display: flex; gap: 24px; align-items: center; padding: 24px 28px; border-radius: 42px;
+        background: rgba(255, 255, 255, .97); box-shadow: 0 18px 50px rgba(0, 0, 0, .14), 0 0 0 1px rgba(23, 20, 26, .05); }
+      .push img { width: 88px; height: 88px; border-radius: 20px; }
+      .push .t { flex: 1; }
+      .push .a { display: flex; justify-content: space-between; font-weight: 700; font-size: 24px; color: var(--muted); letter-spacing: .04em; }
+      .push .ti { font-weight: 800; font-size: 32px; margin-top: 4px; }
+      .push .bo { font-weight: 700; font-size: 32px; margin-top: 2px; }
+      .push .bo b { color: var(--ox); }
+
+      /* captions */
+      .cap { position: absolute; left: 0; right: 0; top: 1500px; display: flex; justify-content: center; z-index: 8; }
+      .cap span { display: block; max-width: 960px; padding: 16px 32px 18px; background: var(--ink); color: #fff; border-radius: 16px;
+        font-weight: 800; font-size: 52px; line-height: 1.12; letter-spacing: -0.01em; text-align: center; box-shadow: 0 12px 30px rgba(0,0,0,.18); }
+      .cap.app { top: 1330px; }
+      #ai-label { position: absolute; left: 0; right: 0; top: 44px; display: flex; justify-content: center; z-index: 9; }
+      #ai-label span { display: block; padding: 5px 14px; background: rgba(255, 255, 255, .85); border-radius: 8px;
+        font-weight: 600; font-size: 21px; color: rgba(23, 20, 26, .7); }
+      .tap { position: absolute; width: 150px; height: 150px; margin: -75px 0 0 -75px; z-index: 7; }
+      .tap i { display: block; width: 100%; height: 100%; border-radius: 50%; border: 3px solid rgba(255, 255, 255, .95);
+        background: rgba(23, 20, 26, .14); opacity: 0; }
+
+      /* end */
+      #s-end .in { position: absolute; top: 330px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; }
+      #s-end .icon { width: 150px; height: 150px; border-radius: 36px; box-shadow: 0 20px 40px rgba(23, 20, 26, .14); }
+      #s-end .word { margin-top: 26px; font-family: "Bodoni Moda"; font-weight: 500; font-size: 120px; letter-spacing: -2px; line-height: 1; }
+      #s-end .e1 { margin-top: 70px; font-weight: 800; font-size: 64px; text-transform: uppercase; letter-spacing: -0.02em; text-align: center; line-height: 1; }
+      #s-end .brandsline { margin-top: 26px; text-align: center; line-height: 1.7; font-size: 24px; }
+      #s-end .e2 { margin-top: 70px; padding: 22px 40px; border-radius: 20px; background: var(--ink); color: #fff;
+        font-weight: 800; font-size: 60px; text-transform: uppercase; letter-spacing: -0.01em; }
+      #s-end .e3 { margin-top: 22px; font-weight: 700; font-size: 40px; color: var(--muted); }
+      #s-end .badges { display: flex; gap: 26px; margin-top: 56px; }
+      #s-end .badges img { height: 100px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="21.6">
+
+      <section id="s-brands" class="scene clip" data-start="0" data-duration="4.9" data-track-index="0">
+        <div class="h"><span class="ox">%70'e varan</span><small>indirimler</small></div>
+        <div id="grid">
+          <div class="cell" id="g1"><div class="im"><img src="assets/p50078797.jpg" alt="" /></div><div class="ft"><div class="bn" lang="en">Zara</div><div class="pr"><strong>₺1.290</strong><span class="chip">−%52</span></div></div></div>
+          <div class="cell" id="g2"><div class="im"><img src="assets/p11483844.jpg" alt="" /></div><div class="ft"><div class="bn" lang="en">Mango</div><div class="pr"><strong>₺999</strong><span class="chip">−%64</span></div></div></div>
+          <div class="cell" id="g3"><div class="im"><img src="assets/p1289210.jpg" alt="" style="object-fit:contain" /></div><div class="ft"><div class="bn" lang="en">Massimo Dutti</div><div class="pr"><strong>₺2.300</strong><span class="chip">−%39</span></div></div></div>
+          <div class="cell" id="g4"><div class="im"><img src="assets/p8123.jpg" alt="" /></div><div class="ft"><div class="bn" lang="en">Penti</div><div class="pr"><strong>₺1.200</strong><span class="chip">−%70</span></div></div></div>
+          <div class="cell" id="g5"><div class="im"><img src="assets/p1420066.jpg" alt="" /></div><div class="ft"><div class="bn" lang="en">Beymen</div><div class="pr"><strong>₺1.499</strong><span class="chip">−%70</span></div></div></div>
+          <div class="cell" id="g6"><div class="im"><img src="assets/p6028620.jpg" alt="" /></div><div class="ft"><div class="bn" lang="en">Boyner</div><div class="pr"><strong>₺3.999</strong><span class="chip">−%70</span></div></div></div>
+        </div>
+      </section>
+
+      <section id="s-problem" class="scene clip" data-start="4.9" data-duration="3.84" data-track-index="0">
+        <div class="h">Ucuzladı mı?</div>
+        <div class="sub">Her gün aynı siteyi yenilemek…</div>
+        <div class="photo"><img src="assets/p11550916.jpg" alt="" /></div>
+        <div id="refresh"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.35-5.66" /><path d="M20 4v4.5h-4.5" /></svg></div>
+        <div class="tag"><div class="bn" lang="en">Koton</div><div class="nm">Denim ceket</div>
+          <div class="curs" style="margin-top:18px"><div class="cur">₺2.699</div></div></div>
+      </section>
+
+      <video id="s2" class="seg clip" src="assets/s2.mp4" data-start="8.74" data-duration="0.5" data-track-index="0" muted playsinline></video>
+      <video id="s2b" class="seg clip" src="assets/s2b.mp4" data-start="9.24" data-duration="0.5" data-track-index="0" muted playsinline></video>
+      <video id="s3" class="seg clip" src="assets/s3.mp4" data-start="9.74" data-duration="2.3" data-track-index="0" muted playsinline></video>
+      <div id="tap1" class="tap clip" style="left: 284px; top: 920px" data-start="9.94" data-duration="0.7" data-track-index="2"><i></i></div>
+
+      <section id="s-drops" class="scene clip" data-start="12.04" data-duration="4.2" data-track-index="0">
+        <div class="photo"><img src="assets/p11550916.jpg" alt="" /></div>
+        <div class="tag"><div class="bn" lang="en">Koton</div><div class="nm">Denim ceket</div>
+          <div class="olds"><span class="old" id="o1">₺2.699<i></i></span><span class="old" id="o2">₺1.099<i></i></span></div>
+          <div class="curs"><div class="cur" id="k0">₺2.699</div><div class="cur" id="k1">₺1.099</div><div class="cur" id="k2">₺879</div></div>
+          <span class="chip" id="save">−%67</span></div>
+        <div class="push" id="n1"><div class="b"><img src="assets/app-icon.png" alt="" />
+          <div class="t"><div class="a"><span>MODADROP</span><span>11 Ağustos</span></div>
+            <div class="ti">Koton · Denim ceket</div><div class="bo">₺2.699 → ₺1.099 <b>(−%59)</b></div></div></div></div>
+        <div class="push" id="n2"><div class="b"><img src="assets/app-icon.png" alt="" />
+          <div class="t"><div class="a"><span>MODADROP</span><span>25 Eylül</span></div>
+            <div class="ti">Daha da düştü · Denim ceket</div><div class="bo">₺1.099 → ₺879 <b>(−%20)</b></div></div></div></div>
+      </section>
+
+      <section id="s-end" class="scene clip" data-start="16.24" data-duration="5.36" data-track-index="1">
+        <div class="in">
+          <img class="icon" src="assets/app-icon.png" alt="" />
+          <div class="word">Modadrop</div>
+          <div class="e1">Onlarca marka,<br />tek yerde.</div>
+          <div class="eyebrow brandsline" lang="en">Zara · Mango · Massimo Dutti<br />Penti · Beymen · Boyner</div>
+          <div class="e2">Hemen indir</div>
+          <div class="e3">İstediğini daha iyi fiyata yakala.</div>
+          <div class="badges"><img src="assets/badge-appstore.svg" alt="" /><img src="assets/badge-play.png" alt="" /></div>
+        </div>
+      </section>
+
+      <div id="c1" class="cap clip" data-start="4.89" data-duration="2.0" data-track-index="3"><span>Almak istediğin ürün ucuzladı mı diye</span></div>
+      <div id="c2" class="cap clip" data-start="6.9" data-duration="1.84" data-track-index="3"><span>siteleri durmadan yenileme.</span></div>
+      <div id="c3" class="cap app clip" data-start="8.74" data-duration="1.32" data-track-index="3"><span>Ürünü Modadrop'a ekle,</span></div>
+      <div id="c4" class="cap app clip" data-start="10.06" data-duration="1.98" data-track-index="3"><span>fiyatını senin yerine izlesin.</span></div>
+      <div id="c5" class="cap clip" data-start="12.04" data-duration="1.74" data-track-index="3"><span>İndirime girince haber verir;</span></div>
+      <div id="c6" class="cap clip" data-start="13.79" data-duration="2.45" data-track-index="3"><span>daha da düşerse bir bildirim daha gelir.</span></div>
+
+      <div id="ai-label" class="clip" data-start="0" data-duration="16.24" data-track-index="4"><span>Seslendirme yapay zekâ ile oluşturulmuştur</span></div>
+      <audio id="vo" src="assets/vo.m4a" data-start="0" data-duration="20.96" data-track-index="10" data-volume="1"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // hook: a card lands on each brand name, then the headline slams
+      [["#g1", 0.07], ["#g2", 0.56], ["#g3", 1.09], ["#g4", 1.96], ["#g5", 2.46], ["#g6", 2.94]].forEach(([id, t]) => {
+        tl.fromTo(id, { y: 50, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }, t);
+      });
+      tl.fromTo("#s-brands .h", { scale: 1.25, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 0.0);
+      tl.fromTo("#s-brands .h", { scale: 1 }, { scale: 1.08, duration: 0.16, yoyo: true, repeat: 1, ease: "power2.out" }, 3.56);
+      tl.fromTo("#grid", { y: 0 }, { y: 14, duration: 0.12, yoyo: true, repeat: 1, ease: "power1.inOut" }, 3.55);
+      // problem
+      tl.fromTo("#s-problem .h", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 4.95);
+      tl.fromTo("#s-problem .sub", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 5.3);
+      tl.fromTo("#s-problem .photo", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, 4.95);
+      tl.fromTo("#s-problem .tag", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 5.2);
+      tl.fromTo("#refresh", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 5.4);
+      tl.fromTo("#refresh svg", { rotation: 0 }, { rotation: 1080, duration: 3.2, ease: "power1.inOut" }, 5.5);
+      // app
+      tl.fromTo("#tap1 i", { scale: 0.5, opacity: 1 }, { scale: 1.15, opacity: 0, duration: 0.55, ease: "power2.out" }, 9.94);
+      // drops
+      tl.fromTo("#s-drops .photo", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 12.04);
+      tl.fromTo("#s-drops .tag", { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power2.out" }, 12.1);
+      tl.set("#o1, #o2, #k1, #k2, #save", { opacity: 0 }, 12.04);
+      tl.set("#o1 i, #o2 i", { scaleX: 0 }, 12.04);
+      tl.fromTo("#n1", { y: -220, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 12.2);
+      tl.to("#k0", { opacity: 0, y: -14, duration: 0.25 }, 12.55);
+      tl.to("#o1", { opacity: 1, duration: 0.25 }, 12.55);
+      tl.to("#o1 i", { scaleX: 1, duration: 0.3, ease: "power2.inOut" }, 12.65);
+      tl.fromTo("#k1", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 12.65);
+      tl.to("#n1", { y: 190, scale: 0.94, opacity: 0.8, duration: 0.45, ease: "power2.inOut" }, 13.8);
+      tl.fromTo("#n2", { y: -220, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "power3.out" }, 13.85);
+      tl.to("#k1", { opacity: 0, y: -14, duration: 0.25 }, 14.2);
+      tl.to("#o2", { opacity: 1, duration: 0.25 }, 14.2);
+      tl.to("#o2 i", { scaleX: 1, duration: 0.3, ease: "power2.inOut" }, 14.3);
+      tl.fromTo("#k2", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 14.3);
+      tl.fromTo("#save", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.5)" }, 14.7);
+      // captions
+      document.querySelectorAll(".cap span").forEach((el) => {
+        const t = parseFloat(el.parentElement.dataset.start);
+        tl.fromTo(el, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.18, ease: "power2.out" }, t);
+      });
+      // end
+      tl.fromTo("#s-end .icon", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.8)" }, 16.24);
+      tl.fromTo("#s-end .word", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 16.35);
+      tl.fromTo("#s-end .e1", { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power2.out" }, 16.3);
+      tl.fromTo("#s-end .brandsline", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 16.8);
+      tl.fromTo("#s-end .e2", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 17.85);
+      tl.fromTo("#s-end .e3", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 19.45);
+      tl.fromTo("#s-end .badges", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 19.6);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" font-family="SFMono-Regular, Menlo, Consolas, monospace">
+<rect width="1280" height="440" rx="20" fill="#0d0d12"/>
+<text x="40" y="40" font-size="18" font-weight="700" fill="#fff" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif">The anti-slop gate — real output on real prompts</text>
+<rect x="30" y="60" width="600" height="350" rx="14" fill="#15141b" stroke="#2c2a36"/>
+<circle cx="52" cy="82" r="6" fill="#ff5f57"/><circle cx="72" cy="82" r="6" fill="#febc2e"/><circle cx="92" cy="82" r="6" fill="#28c840"/>
+<text x="114" y="87" font-size="13" fill="#8d8899">before · &quot;Woman talking about sleep gummies&quot;</text>
+<text x="50" y="120" font-size="14" fill="#8d8899">$ check_prompt.py one-liner.txt</text>
+<text x="50" y="148" font-size="14"><tspan fill="#ff5d5d" font-weight="700">FAIL</tspan><tspan fill="#d9d6e0">  camera = phone (iPhone / smartphone / UGC phone footage)</tspan></text>
+<text x="50" y="173" font-size="14"><tspan fill="#ff5d5d" font-weight="700">FAIL</tspan><tspan fill="#d9d6e0">  camera motion stated (handheld / static / propped / moun…</tspan></text>
+<text x="50" y="198" font-size="14"><tspan fill="#ff5d5d" font-weight="700">FAIL</tspan><tspan fill="#d9d6e0">  a named light source</tspan></text>
+<text x="50" y="223" font-size="14"><tspan fill="#ff5d5d" font-weight="700">FAIL</tspan><tspan fill="#d9d6e0">  skin realism (pores / natural texture)</tspan></text>
+<text x="50" y="248" font-size="14"><tspan fill="#ff5d5d" font-weight="700">FAIL</tspan><tspan fill="#d9d6e0">  diegetic audio (mic / room sound)</tspan></text>
+<text x="50" y="273" font-size="14"><tspan fill="#ff5d5d" font-weight="700">FAIL</tspan><tspan fill="#d9d6e0">  no on-screen text in the generation</tspan></text>
+<text x="50" y="298" font-size="14"><tspan fill="#f2c14e" font-weight="700">WARN</tspan><tspan fill="#d9d6e0">  performance beats tied to words (on the word / on &quot;…&quot;)</tspan></text>
+<text x="50" y="323" font-size="14"><tspan fill="#f2c14e" font-weight="700">WARN</tspan><tspan fill="#d9d6e0">  one lived-in background detail</tspan></text>
+<text x="50" y="348" font-size="14"><tspan fill="#f2c14e" font-weight="700">WARN</tspan><tspan fill="#d9d6e0">  vertical 9:16 / 720x1280</tspan></text>
+<text x="50" y="373" font-size="15" font-weight="800" fill="#ff5d5d">6 FAIL, 7 WARN</text>
+<rect x="650" y="60" width="600" height="350" rx="14" fill="#15141b" stroke="#2c2a36"/>
+<circle cx="672" cy="82" r="6" fill="#ff5f57"/><circle cx="692" cy="82" r="6" fill="#febc2e"/><circle cx="712" cy="82" r="6" fill="#28c840"/>
+<text x="734" y="87" font-size="13" fill="#8d8899">after · a 650-word shot-by-shot UGC prompt</text>
+<text x="670" y="120" font-size="14" fill="#8d8899">$ check_prompt.py car-selfie.txt --seconds 12</text>
+<text x="670" y="148" font-size="14"><tspan fill="#f2c14e" font-weight="700">WARN</tspan><tspan fill="#d9d6e0">  beauty-filter negatives</tspan></text>
+<text x="670" y="173" font-size="14"><tspan fill="#f2c14e" font-weight="700">WARN</tspan><tspan fill="#d9d6e0">  dialogue 51 words for 12s (fits ~25–40) — too long: spli…</tspan></text>
+<text x="670" y="198" font-size="14"><tspan fill="#58d68d" font-weight="700">PASS</tspan><tspan fill="#d9d6e0">  camera = phone (iPhone / smartphone / UGC phone footage)</tspan></text>
+<text x="670" y="223" font-size="14"><tspan fill="#58d68d" font-weight="700">PASS</tspan><tspan fill="#d9d6e0">  camera motion stated (handheld / static / propped / moun…</tspan></text>
+<text x="670" y="248" font-size="14"><tspan fill="#58d68d" font-weight="700">PASS</tspan><tspan fill="#d9d6e0">  a named light source</tspan></text>
+<text x="670" y="273" font-size="14"><tspan fill="#58d68d" font-weight="700">PASS</tspan><tspan fill="#d9d6e0">  skin realism (pores / natural texture)</tspan></text>
+<text x="670" y="298" font-size="14"><tspan fill="#58d68d" font-weight="700">PASS</tspan><tspan fill="#d9d6e0">  diegetic audio (mic / room sound)</tspan></text>
+<text x="670" y="323" font-size="14"><tspan fill="#58d68d" font-weight="700">PASS</tspan><tspan fill="#d9d6e0">  no on-screen text in the generation</tspan></text>
+<text x="670" y="348" font-size="14"><tspan fill="#58d68d" font-weight="700">PASS</tspan><tspan fill="#d9d6e0">  performance beats tied to words (on the word / on &quot;…&quot;)</tspan></text>
+<text x="670" y="373" font-size="15" font-weight="800" fill="#58d68d">0 FAIL, 2 WARN</text>
+</svg>
