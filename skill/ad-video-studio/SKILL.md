@@ -34,7 +34,7 @@ For ANY ad type, the hook and script follow `ugc/references/copy-principles.md` 
 Look for, in this order, and read what exists:
 1. Brand system — `docs/marketing/BRAND.md`, `packages/tokens/`, a design-system doc. Palette, faces, colour rules.
 2. Positioning — `docs/marketing/POSITIONING.md` or similar: what the product is, the pitch in the owner's words.
-3. Audience — project memory / docs. (Modadrop: **women 18–45, Turkey**.)
+3. Audience — project memory / docs. (e.g. **women 18–45, Turkey**.)
 4. Real data source — DB (`.env` `DATABASE_URL`), API, catalogue. Ads are built from REAL numbers.
 5. Assets — app icon, store badges, logos, existing footage, music beds, prior ads' manifests.
 
@@ -57,7 +57,7 @@ Never invent a palette or face when the project has one.
 - A display serif (e.g. Bodoni) only for the logo/wordmark — and never for prices (no ₺ glyph).
 - No chunky rounded "button" boxes, no thick outlined/stroked TikTok captions — "amateur".
 - Captions: one clean solid strip (ink bg, white 800 text), ≤ 2 lines, synced to the words.
-- Follow the project palette strictly; accent colours only where the brand allows (Modadrop: oxblood = money saved only).
+- Follow the project palette strictly; accent colours only where the brand allows (e.g. one accent colour reserved for money saved).
 - Product photos are shown **whole**: no Ken-Burns zoom on garments, no crop. Size the frame to the
   photo's aspect ratio (no letterbox bars). Get hi-res images (swap CDN width params, e.g. `w=750`→`w=1920`).
 - Pick **desirable, audience-matched** products (women's pieces worn by a model, seasonal) over flat
@@ -66,13 +66,13 @@ Never invent a palette or face when the project has one.
 **Pacing & story**
 - Not too fast, not ambiguous: ~18–24 s, ONE idea per scene, each visual synced to the spoken word.
 - Default 5-beat shape (reorder only if the owner asks):
-  1. **Hook 0–5 s** — the first line must land its point within **2–3 s** (a pattern interrupt, never a pitch or the brand name first); the attention-grabber first (for Modadrop: the brand range + biggest real
+  1. **Hook 0–5 s** — the first line must land its point within **2–3 s** (a pattern interrupt, never a pitch or the brand name first); the attention-grabber first (for a deals app: the brand range + biggest real
      discount, cards landing as each brand is named, headline "%70'E VARAN İNDİRİMLER").
   2. **Problem** — the stress ("siteleri durmadan yenileme"), one product stuck at full price.
   3. **Solution** — real app footage doing the action (e.g. "Takibe al").
   4. **Proof** — real data: notifications stacking, price stepping down.
   5. **CTA end card** — brand, one strong line, "**hemen indir**", official store badges.
-- Lead with the product's core promise in the owner's words, not a side feature (Modadrop: "add what
+- Lead with the product's core promise in the owner's words, not a side feature (e.g. "add what
   you want → told when it drops, and again when it drops further"; sizes are secondary).
 
 **Spend**
@@ -142,7 +142,7 @@ Work in `video/ads/<date>-<slug>/` (or the project's video folder): `audio/ app/
    keep old versions as `index-vN.html`, open the file (`open -R` in Finder / QuickTime), summarise.
 9. **Captions & link** — ChatGPT writes TikTok (5 hashtags, search words in the sentence) + Instagram
    (7–9 hashtags) with the same real numbers; brand hashtags OK in organic posts; "Link profilde".
-   Bio link = the project's own link page with `?p=<source>` attribution (Modadrop: `modadrop.vercel.app/link`).
+   Bio link = the project's own link page with `?p=<source>` attribution (e.g. `yourapp.com/link`).
    Then ask before posting.
 
 ## 3. Research tools — tested 2026-09-29 (don't re-evaluate)
