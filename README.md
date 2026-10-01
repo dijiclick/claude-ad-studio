@@ -5,6 +5,13 @@
 <h3 align="center">Other AI ad tools generate first and hope.<br>Ad Studio <u>proves first</u> — then generates.</h3>
 
 <p align="center">
+  <code>git clone https://github.com/dijiclick/claude-ad-studio && cd claude-ad-studio && ./install.sh</code><br>
+  then tell Claude Code: <i>"make me an ad for &lt;your product&gt;"</i>
+</p>
+
+<p align="center">⭐ If it saves you one ad, star the repo — it's how other marketers find it.</p>
+
+<p align="center">
   <b>① Starts from ads that are already winning</b> — pulled from the Meta Ad Library and ranked by <i>days running</i>, the one number advertisers can't fake.<br>
   <b>② Clones their timing, not their assets</b> — every winner is broken into frames + a timed transcript: when the hook lands, when the proof shows, when the CTA hits.<br>
   <b>③ Blocks "AI slop" before you pay</b> — a realism gate <b>fails</b> any video prompt that still has the tells viewers read as fake. No credit is spent on a prompt that fails.<br>
@@ -55,7 +62,7 @@ It starts by asking what you want to make, then runs the right pipeline:
 | | What it does | Why it matters |
 |---|---|---|
 | 🧭 **Asks first, then routes** | One skill for every ad type — motion graphics, AI UGC, AI podcast, talking photo, statics, copy. It asks which one, then runs the right pipeline. | No more "which prompt/tool do I use?" |
-| 🏆 **Finds the winners for you** | Pulls competitors' ads from the Meta Ad Library and ranks them by **days running** — the one metric advertisers can't fake, because nobody keeps paying for an ad that loses. Plus the course's sourcing playbook (Kalo Data by spend, raw TikToks, green/red flags). | You start from proof, not a guess. |
+| 🏆 **Finds the winners for you** | Pulls competitors' ads from the Meta Ad Library and ranks them by **days running** — the one metric advertisers can't fake, because nobody keeps paying for an ad that loses. Plus a sourcing playbook (Kalo Data by spend, raw TikToks, green/red flags). | You start from proof, not a guess. |
 | 🔬 **Winner deconstructor** | Drop in any winning ad → frames + a timed transcript (99 languages) → a beat-by-beat table of *when* the hook lands, the proof shows, the CTA hits. | You copy what works — the timing — not a competitor's assets. |
 | 🚫 **Anti-slop gate** | A checker that **fails** a video prompt missing the realism layers (light source, skin texture, camera motion, room audio, word-tied gestures) *before* you pay for a generation. | The 7 tells that make viewers feel "fake" get caught in text, not in a $1 render. |
 | 🎯 **5 hooks by default** | Every ad ships as one shared body + five openings, one per lead type (objection, secret, myth-bust, live reaction, A/B), with a kill/scale test plan. | Hook swaps move cost per result 2–4×. Testing hooks is the cheapest win in ads. |
@@ -105,10 +112,10 @@ Under the hood it uses [gflow](https://github.com/ffroliva/gflow-cli), which dri
 ## Install (30 seconds)
 
 ```bash
-git clone <this-repo-url> ad-studio && cd ad-studio && ./install.sh
+git clone https://github.com/dijiclick/claude-ad-studio && cd claude-ad-studio && ./install.sh
 ```
 
-No git access? Unzip `ad-video-studio-SHARE.zip` into `~/.claude/skills/` — same thing.
+No git? Click **Code → Download ZIP** above, unzip it, and run `./install.sh` inside the folder — same thing.
 
 Optional tools (macOS): `brew install ffmpeg uv yt-dlp` — for video deconstruction and transcripts.
 
